@@ -153,7 +153,6 @@ class SinglyLinkedList {
 		}
 		
 		System.out.println(currNode.data + "]");
-		return;
 	}
 }
 
