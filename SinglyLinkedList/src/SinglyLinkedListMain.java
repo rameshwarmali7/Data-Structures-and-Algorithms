@@ -43,8 +43,7 @@ class SinglyLinkedList {
 			if(this.head == null) {
 				this.tail = givenNode;
 			}
-			this.head = givenNode;
-			
+			this.head = givenNode;	
 		} else {
 			while(currentNode.nextNode != null) {
 				if(currentIndex == index - 1) break;
@@ -91,15 +90,14 @@ class SinglyLinkedList {
 		ListNode currentNode = this.head;
 		int currentIndex = 0;
 		
-		if(index == 0) {
-			this.head = this.head.nextNode;
-		} else {
+		if(index == 0) this.head = this.head.nextNode;
+		else {
 			while(currentNode.nextNode != null) {
 				if(currentIndex == index - 1) {
 					currentNode.nextNode = currentNode.nextNode.nextNode;
 					if(index == this.size - 1) this.tail = currentNode;
 					break;
-					}
+				}
 				currentNode = currentNode.nextNode;
 				currentIndex++;
 			}
@@ -114,17 +112,18 @@ class SinglyLinkedList {
 		ListNode currentNode = this.head;
 		int currentIndex = 0;
 		
-		if(currentNode.data == data) remove(0);
-		else {
-			while(currentNode.nextNode != null) {
-				if(currentNode.nextNode.data == data) {
-					currentNode.nextNode = currentNode.nextNode.nextNode;
-					if(currentIndex == this.size - 2) this.tail = currentNode;
-					break;
-					}
-				currentNode = currentNode.nextNode;
-				currentIndex++;
+		if(currentNode.data == data) {
+			remove(0);
+			return;
+		}
+		while(currentNode.nextNode != null) {
+			if(currentNode.nextNode.data == data) {
+				currentNode.nextNode = currentNode.nextNode.nextNode;
+				if(currentIndex == this.size - 2) this.tail = currentNode;
+				break;
 			}
+			currentNode = currentNode.nextNode;
+			currentIndex++;
 		}
 
 		this.size--;
