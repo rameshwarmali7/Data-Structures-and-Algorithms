@@ -14,7 +14,7 @@ class SinglyLinkedList {
 	private ListNode tail;
 	private int size;
 	
-	public void addListNodeAtEnd(int data) {
+	public void addNode(int data) {
 		
 		ListNode givenNode = new ListNode(data);
 		
@@ -23,130 +23,60 @@ class SinglyLinkedList {
 		} else {
 			this.tail.nextNode = givenNode;
 		}
+		
 		this.tail = givenNode;
 		
 		this.size++;
 		printLinkedList();
-		return;
 	}
 	
-	public void addListNodeAtStart(int data) {
+	public void addNode(int data, int index) {
+		
+		if(index < 0 || index > this.size) throw new IllegalArgumentException("Invalid Index");
 		
 		ListNode givenNode = new ListNode(data);
-		
-		givenNode.nextNode = this.head;
-		
-		if(this.head == null) {
-			this.tail = givenNode;
-		}
-		
-		this.head = givenNode;
-		
-		this.size++;
-		printLinkedList();		
-		return;
-	}
-	
-	public ListNode getNode(int data) {
-		
-		ListNode currNode = this.head;
-		
-		while(currNode.nextNode != null) {
-			if(currNode.data == data) {
-				return currNode;
-			}
-			currNode = currNode.nextNode;
-		}
-		
-		System.out.println("No Node exist");
-		return null;
-	}
-
-	public void deleteNode(ListNode givenNode) {
-		
-		ListNode currNode = this.head;
-		
-		while(currNode.nextNode != null) {
-			if(currNode.nextNode == givenNode) {
-				currNode.nextNode = currNode.nextNode.nextNode;
-				
-				this.size--;
-				printLinkedList();
-				return;
-			}
-			currNode = currNode.nextNode;
-		}
-		
-		System.out.println("No such node exist");
-		return;		
-	}
-	
-	public void addListNodeAtPosition(int data, int index) {
-		
-		if(index > this.size) {
-			System.out.println("Out of bound");
-			return;
-		}
+		int currentIndex = 0;
+		ListNode currentNode = this.head;
 		
 		if(index == 0) {
-			addListNodeAtStart(data);
-			return;
-		}
-		
-		if(index == this.size) {
-			addListNodeAtEnd(data);
-			return;
-		}
-		
-		ListNode givenNode = new ListNode(data);
-		ListNode currentNode = this.head;
-		int currentIndex = 0;
-		
-		while(currentNode.nextNode != null) {
-			if(currentIndex == index - 1) break;
+			givenNode.nextNode = this.head;
+			if(this.head == null) {
+				this.tail = givenNode;
+			}
+			this.head = givenNode;
 			
-			currentNode = currentNode.nextNode;
-			currentIndex++;
+		} else {
+			while(currentNode.nextNode != null) {
+				if(currentIndex == index - 1) break;
+				currentNode = currentNode.nextNode;
+				currentIndex++;
+			}
+			givenNode.nextNode = currentNode.nextNode;
+			currentNode.nextNode = givenNode;
+			if(index == this.size) this.tail = givenNode;
 		}
-		
-		givenNode.nextNode = currentNode.nextNode;
-		currentNode.nextNode = givenNode;
 		
 		this.size++;
 		printLinkedList();
-		return;
 	}
 	
-	public void deleteListNodeAtPosition(int index) {
+	
+	public int get(int index) {
 		
-		if(index > this.size - 1) {
-			System.out.println("Out of bound");
-			return;
-		}
+		if(index < 0 || index > this.size - 1) throw new IllegalArgumentException("Invalid Index");
 		
-		if(index == 0) {
-			this.head = this.head.nextNode;
-			this.size--;
-			printLinkedList();
-			return;
-		}
-		
-		ListNode currentNode = this.head;
 		int currentIndex = 0;
+		int dataAtIndex = 0;
+		ListNode currentNode = this.head;
 		
-		while(currentNode.nextNode != null) {
-			if(currentIndex == index - 1) {
-				currentNode.nextNode = currentNode.nextNode.nextNode;
-				if(index == this.size - 1) this.tail = currentNode;
-				break;
-			}
+		while(currentNode != null) {
+			if(currentIndex == index) dataAtIndex = currentNode.data;
 			currentNode = currentNode.nextNode;
 			currentIndex++;
 		}
 		
-		this.size--;
-		printLinkedList();
-		return;		
+		System.out.println(dataAtIndex);
+		return dataAtIndex;
 	}
 	
 	public boolean isEmpty() {
@@ -154,11 +84,57 @@ class SinglyLinkedList {
 		return this.size == 0;
 	}
 	
-	public int getSize() {
+	public void remove(int index) {
+		
+		if(index < 0 || index > this.size - 1) throw new IllegalArgumentException("Invalid Index");
+		
+		ListNode currentNode = this.head;
+		int currentIndex = 0;
+		
+		if(index == 0) {
+			this.head = this.head.nextNode;
+		} else {
+			while(currentNode.nextNode != null) {
+				if(currentIndex == index - 1) {
+					currentNode.nextNode = currentNode.nextNode.nextNode;
+					if(index == this.size - 1) this.tail = currentNode;
+					break;
+					}
+				currentNode = currentNode.nextNode;
+				currentIndex++;
+			}
+		}
+		
+		this.size--;
+		printLinkedList();		
+	}
+	
+	public void removeElement(int data) {
+		
+		ListNode currentNode = this.head;
+		int currentIndex = 0;
+		
+		if(currentNode.data == data) remove(0);
+		else {
+			while(currentNode.nextNode != null) {
+				if(currentNode.nextNode.data == data) {
+					currentNode.nextNode = currentNode.nextNode.nextNode;
+					if(currentIndex == this.size - 2) this.tail = currentNode;
+					break;
+					}
+				currentNode = currentNode.nextNode;
+				currentIndex++;
+			}
+		}
+
+		this.size--;
+		printLinkedList();
+	}
+	
+	public int size() {
 		System.out.println(this.size);
 		return this.size;
 	}
-
 	
 	private void printLinkedList() {
 		
@@ -185,14 +161,16 @@ public class SinglyLinkedListMain {
 	public static void main(String[] args) {
 		SinglyLinkedList sll = new SinglyLinkedList();
 		
-		sll.addListNodeAtEnd(12);
-		sll.addListNodeAtEnd(12);
-		sll.addListNodeAtEnd(13);
-		sll.addListNodeAtEnd(13);
-		sll.addListNodeAtEnd(13);
-		sll.addListNodeAtEnd(14);
-		sll.addListNodeAtEnd(14);
-		sll.addListNodeAtEnd(14);
+		sll.size();
+		sll.addNode(21);
+		sll.addNode(14, 0);
+		sll.get(1);
 		
+		sll.remove(1);
+		sll.addNode(32, 0);
+		sll.addNode(55, 2);
+		sll.addNode(21, 1);
+		sll.remove(3);
+		sll.remove(0);
 	}
 }
