@@ -9,9 +9,9 @@ class Queue {
 	public Queue(int capacity) {
 		
 		this.capacity = capacity;
-		front = -1;
-		rear = -1;
-		queue = new int[this.capacity];
+		this.front = -1;
+		this.rear = -1;
+		this.queue = new int[this.capacity];
 		printQueue();
 	}
 	
