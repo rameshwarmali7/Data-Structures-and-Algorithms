@@ -84,7 +84,5 @@ public class StackUsingArrayMain {
 //		s.pop();
 		
 		s.push(67);
-		
 	}
-
 }
