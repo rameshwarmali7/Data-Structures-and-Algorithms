@@ -70,11 +70,11 @@ class Queue {
 	
 	private void printQueue() {
 
-		if(isEmpty()) System.out.println("[]");
+		if(isEmpty()) System.out.println("Queue is Empty");
 		else {
-			System.out.print("Size=" + this.size + " Front=" + this.queue[this.front] + " Rear=" + this.queue[this.rear] + " List=[");
+			System.out.print("Size=" + this.size + " Front=" + this.queue[this.front] + " Rear=" + this.queue[this.rear] + " List=");
 			for(int i = 0; i < this.capacity; i++) System.out.print(this.queue[i] + " ");
-			System.out.println("]");
+			System.out.println();
 		}
 	}
 }
@@ -85,19 +85,12 @@ public class QueueUsingArrayMain {
 		
 		Queue q = new Queue(4);
 		
-		q.add(52);
-		q.add(23);
-		q.add(31);
-		q.add(89);
+		q.add(52);q.add(23);q.add(31);q.add(89);
 		
 		q.remove();
-		q.peek();
+		System.out.println(q.peek());
 		
 		q.add(45);
-		q.remove();
-		q.remove();
-		q.remove();
-		q.remove();
-		q.remove();
+		q.remove();q.remove();q.remove();q.remove();q.remove();
 	}
 }
