@@ -14,6 +14,8 @@ class Queue {
 	private Node front;
 	private Node rear;
 	
+	public Queue() {}
+	
 	public boolean add(int data) {
 		
 		Node givenNode = new Node(data);
@@ -29,11 +31,9 @@ class Queue {
 	
 	public int remove() {
 		
-		int data;
-		
 		if(isEmpty()) throw new IllegalStateException();
 		
-		data = this.front.data;
+		int data = this.front.data;
 		
 		this.front = this.front.nextNode;
 		if(this.size == 1) this.rear = null;
@@ -62,17 +62,19 @@ class Queue {
 	
 	private void printQueue() {
 		
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+			return;
+		}
+		
 		Node currentNode = this.front;
 		
-		if(isEmpty()) System.out.println("Queue is empty");
-		else {
-			System.out.print("Front=" + this.front.data + " Rear=" + this.rear.data + " Size=" + this.size + " Queue=");
-			while(currentNode != null) {
-				System.out.print(currentNode.data + " ");
-				currentNode = currentNode.nextNode;
-			}
-			System.out.println();
+		System.out.print("Front=" + this.front.data + " Rear=" + this.rear.data + " Size=" + this.size + " Queue=");
+		while(currentNode != null) {
+			System.out.print(currentNode.data + " ");
+			currentNode = currentNode.nextNode;
 		}
+		System.out.println();
 	}
 }
 
