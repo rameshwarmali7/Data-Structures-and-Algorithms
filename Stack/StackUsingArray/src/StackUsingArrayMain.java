@@ -1,8 +1,8 @@
 class Stack {
 	
-	private int capacity;
+	final private int capacity;
+	final private int[] stack;
 	private int size;
-	private int[] stack;
 	
 	public Stack(int capacity) {
 		
@@ -11,14 +11,13 @@ class Stack {
 		this.stack = new int[capacity];
 	}
 	
-	public boolean push(int data) {
+	public void push(int data) {
 		
 		if(this.size == this.capacity) throw new IllegalStateException();
 		
 		this.stack[this.size] = data;
 		this.size++;
 		printStack();
-		return true;
 	}
 	
 	public int pop() {
