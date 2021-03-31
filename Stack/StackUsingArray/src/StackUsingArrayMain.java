@@ -61,7 +61,6 @@ class Stack {
 public class StackUsingArrayMain {
 	
 	public static void main(String[] args) {
-		
 		Stack s = new Stack(5);
 		
 		System.out.println(s.isEmpty()); System.out.println();
