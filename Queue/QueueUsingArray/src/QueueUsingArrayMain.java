@@ -1,10 +1,10 @@
 class Queue {
 	
-	private int capacity;
+	final private int capacity;
+	final private int[] queue;
 	private int size;
 	private int front;
 	private int rear;
-	private int[] queue;
 	
 	public Queue(int capacity) {
 		
@@ -15,7 +15,7 @@ class Queue {
 		printQueue();
 	}
 	
-	public boolean add(int data) {
+	public void add(int data) {
 		
 		if(this.size == this.capacity) throw new IllegalStateException();
 		
@@ -24,7 +24,6 @@ class Queue {
 		this.queue[this.rear] = data;
 		this.size++;
 		printQueue();
-		return true;
 	}
 	
 	public int remove() {
