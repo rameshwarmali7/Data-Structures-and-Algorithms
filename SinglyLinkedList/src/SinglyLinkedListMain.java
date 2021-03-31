@@ -1,6 +1,6 @@
 class Node {
 	
-	public int data;
+	final public int data;
 	public Node nextNode;
 	
 	public Node(int data) {
