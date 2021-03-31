@@ -1,6 +1,6 @@
 class Node {
 	
-	public int data;
+	final public int data;
 	public Node nextNode;
 	
 	public Node(int data) {
@@ -15,17 +15,16 @@ class Stack {
 	
 	public Stack() {}
 	
-	public boolean push(int data) {
+	public void push(int data) {
 		
 		Node givenNode = new Node(data);
 		
-		if(!isEmpty()) givenNode.nextNode = this.top;
+		givenNode.nextNode = this.top;
 		
 		this.top = givenNode;
 		
 		this.size++;
 		printStack();
-		return true;
 	}
 	
 	public int pop() {
