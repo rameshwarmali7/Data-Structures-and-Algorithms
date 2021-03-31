@@ -1,6 +1,6 @@
 class Node {
 	
-	public int data;
+	final public int data;
 	public Node nextNode;
 	
 	public Node(int data) {
@@ -16,7 +16,7 @@ class Queue {
 	
 	public Queue() {}
 	
-	public boolean add(int data) {
+	public void add(int data) {
 		
 		Node givenNode = new Node(data);
 		
@@ -26,7 +26,6 @@ class Queue {
 		this.rear = givenNode;
 		this.size++;
 		printQueue();
-		return true;
 	}
 	
 	public int remove() {
