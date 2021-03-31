@@ -4,7 +4,7 @@ class Stack {
 	final private int[] stack;
 	private int size;
 	
-	public Stack(int capacity) {
+	public Stack(final int capacity) {
 		
 		this.capacity = capacity;
 		this.size = 0;
@@ -24,7 +24,7 @@ class Stack {
 		
 		if(isEmpty()) throw new IllegalStateException();
 
-		int data = this.stack[this.size - 1];
+		final int data = this.stack[this.size - 1];
 		
 		this.size--;
 		printStack();
@@ -57,7 +57,6 @@ class Stack {
 		System.out.println();
 	}
 }
-
 
 public class StackUsingArrayMain {
 	

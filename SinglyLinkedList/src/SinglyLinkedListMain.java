@@ -3,7 +3,7 @@ class Node {
 	final public int data;
 	public Node nextNode;
 	
-	public Node(int data) {
+	public Node(final int data) {
 		this.data = data;
 	}
 }
@@ -14,7 +14,7 @@ class SinglyLinkedList {
 	private Node tail;
 	private int size;
 	
-	public void addNode(int data) {
+	public void addNode(final int data) {
 		
 		addNode(data, this.size);
 	}
@@ -23,7 +23,7 @@ class SinglyLinkedList {
 		
 		if(index < 0 || index > this.size) throw new IllegalArgumentException("Invalid Index");
 		
-		Node givenNode = new Node(data);
+		final Node givenNode = new Node(data);
 		Node currentNode = this.head;
 		
 		for(int i = 0; i < index - 1; i++) currentNode = currentNode.nextNode;
