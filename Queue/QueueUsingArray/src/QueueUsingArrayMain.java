@@ -6,7 +6,7 @@ class Queue {
 	private int front;
 	private int rear;
 	
-	public Queue(int capacity) {
+	public Queue(final int capacity) {
 		
 		this.capacity = capacity;
 		this.front = 0;
@@ -15,7 +15,7 @@ class Queue {
 		printQueue();
 	}
 	
-	public void add(int data) {
+	public void add(final int data) {
 		
 		if(this.size == this.capacity) throw new IllegalStateException();
 		
@@ -30,7 +30,7 @@ class Queue {
 		
 		if(isEmpty()) throw new IllegalStateException();
 		
-		int result = this.queue[this.front];
+		final int result = this.queue[this.front];
 		
 		this.front = (this.front + 1) % this.capacity;
 		
