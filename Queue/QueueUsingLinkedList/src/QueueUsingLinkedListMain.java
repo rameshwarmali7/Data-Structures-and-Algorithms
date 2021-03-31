@@ -3,7 +3,7 @@ class Node {
 	final public int data;
 	public Node nextNode;
 	
-	public Node(int data) {
+	public Node(final int data) {
 		this.data = data;
 	}
 }
@@ -16,9 +16,9 @@ class Queue {
 	
 	public Queue() {}
 	
-	public void add(int data) {
+	public void add(final int data) {
 		
-		Node givenNode = new Node(data);
+		final Node givenNode = new Node(data);
 		
 		if(isEmpty()) this.front = givenNode;
 		else this.rear.nextNode = givenNode;
@@ -32,7 +32,7 @@ class Queue {
 		
 		if(isEmpty()) throw new IllegalStateException();
 		
-		int data = this.front.data;
+		final int data = this.front.data;
 		
 		this.front = this.front.nextNode;
 		if(this.size == 1) this.rear = null;
