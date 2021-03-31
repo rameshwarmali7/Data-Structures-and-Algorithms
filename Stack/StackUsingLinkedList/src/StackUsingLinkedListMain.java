@@ -3,7 +3,7 @@ class Node {
 	final public int data;
 	public Node nextNode;
 	
-	public Node(int data) {
+	public Node(final int data) {
 		this.data = data;
 	}
 }
@@ -15,9 +15,9 @@ class Stack {
 	
 	public Stack() {}
 	
-	public void push(int data) {
+	public void push(final int data) {
 		
-		Node givenNode = new Node(data);
+		final Node givenNode = new Node(data);
 		
 		givenNode.nextNode = this.top;
 		
@@ -31,7 +31,7 @@ class Stack {
 		
 		if(isEmpty()) throw new IllegalStateException();
 		
-		int data = this.top.data;
+		final int data = this.top.data;
 		this.top = this.top.nextNode;
 		
 		this.size--;
