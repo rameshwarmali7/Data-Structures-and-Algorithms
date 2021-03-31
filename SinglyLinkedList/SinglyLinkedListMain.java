@@ -19,7 +19,7 @@ class SinglyLinkedList {
 		addNode(data, this.size);
 	}
 	
-	public void addNode(int data, int index) {
+	public void addNode(final int data, final int index) {
 		
 		if(index < 0 || index > this.size) throw new IllegalArgumentException("Invalid Index");
 		
@@ -42,7 +42,7 @@ class SinglyLinkedList {
 		printLinkedList();
 	}
 	
-	public int get(int index) {
+	public int get(final int index) {
 		
 		if(index < 0 || index > this.size - 1) throw new IllegalArgumentException("Invalid Index");
 
@@ -58,7 +58,7 @@ class SinglyLinkedList {
 		return this.size == 0;
 	}
 	
-	public void remove(int index) {
+	public void remove(final int index) {
 		
 		if(index < 0 || index >= this.size) throw new IllegalArgumentException("Invalid Index");
 		

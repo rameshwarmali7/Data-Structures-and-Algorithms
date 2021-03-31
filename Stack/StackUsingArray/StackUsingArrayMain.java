@@ -11,7 +11,7 @@ class Stack {
 		this.stack = new int[capacity];
 	}
 	
-	public void push(int data) {
+	public void push(final int data) {
 		
 		if(this.size == this.capacity) throw new IllegalStateException();
 		
