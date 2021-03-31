@@ -39,7 +39,7 @@ public class MergeSortMain {
 		return filledArray;
 	}
 	
-	private static int[] mergeSortedTwoArray(final int[] leftArray,final int[] rightArray) {
+	private static int[] mergeSortedTwoArray(final int[] leftArray,final  int[] rightArray) {
 		
 		final int leftArrayLength = leftArray.length;
 		final int rightArrayLength = rightArray.length;
