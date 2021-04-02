@@ -15,47 +15,33 @@ public class MergeSortMain {
 		if(givenArray.length <= 1) return givenArray;
 		
 		final int givenArrayLength = givenArray.length;
-		final int midIndex;
+		int midIndex = (givenArrayLength/2);
 		
-		if(givenArrayLength % 2 == 0) midIndex = (givenArrayLength / 2) - 1;
-		else midIndex = givenArrayLength / 2;
+		final int leftArrayLength = midIndex;
+		final int rightArrayLength = givenArrayLength - midIndex;
+		final int[] left = new int[midIndex];
+		final int[] right = new int[givenArrayLength - midIndex];
 		
-		int[] left = fillArray(givenArray, 0, midIndex);
-		int[] right = fillArray(givenArray, midIndex+1, givenArray.length - 1);
-		
-		left = mergeSort(left);
-		right = mergeSort(right);
-		
-		return mergeSortedTwoArray(left, right);
-	}
+		if(givenArrayLength%2==0) midIndex--;
 	
-	private static int[] fillArray(final int[] givenArray, final int startIndex, final int endIndex) {
-		
-		final int filledArrayLength = endIndex - startIndex + 1;
-		final int[] filledArray = new int[filledArrayLength];
-		
-		for(int i = 0; i < filledArrayLength; i++) filledArray[i] = givenArray[startIndex + i];
-		
-		return filledArray;
+		System.arraycopy(givenArray, 0, left, 0, leftArrayLength);
+		System.arraycopy(givenArray, midIndex + 1, right, 0, rightArrayLength);
+
+		return mergeSortedTwoArray(left, right);
 	}
 	
 	private static int[] mergeSortedTwoArray(final int[] leftArray,final  int[] rightArray) {
 		
-		final int leftArrayLength = leftArray.length;
-		final int rightArrayLength = rightArray.length;
-		final int sortedArrayLength = leftArrayLength + rightArrayLength;
-		final int[] sortedArray = new int[sortedArrayLength];
-		int leftArrayIndex = 0;
-		int rightArrayIndex = 0;
-		int sortedArrayIndex = 0;
+		final int[] sortedArray = new int[leftArray.length + rightArray.length];
+		int leftArrayIndex = 0, rightArrayIndex = 0, sortedArrayIndex = 0;
 		
-		while(leftArrayIndex < leftArrayLength && rightArrayIndex < rightArrayLength) {
+		while(leftArrayIndex < leftArray.length && rightArrayIndex < rightArray.length) {
 			if(leftArray[leftArrayIndex] < rightArray[rightArrayIndex]) sortedArray[sortedArrayIndex++] = leftArray[leftArrayIndex++];
 			else sortedArray[sortedArrayIndex++] = rightArray[rightArrayIndex++];
 		}
 		
-		while(leftArrayIndex < leftArrayLength) sortedArray[sortedArrayIndex++] = leftArray[leftArrayIndex++];
-		while(rightArrayIndex < rightArrayLength) sortedArray[sortedArrayIndex++] = rightArray[rightArrayIndex++];
+		while(leftArrayIndex < leftArray.length) sortedArray[sortedArrayIndex++] = leftArray[leftArrayIndex++];
+		while(rightArrayIndex < rightArray.length) sortedArray[sortedArrayIndex++] = rightArray[rightArrayIndex++];
 		return sortedArray;
 	}
 }
