@@ -48,7 +48,7 @@ class Stack {
 		return this.size;
 	}
 	
-	private void printStack() {
+	public void printStack() {
 		
 		if(isEmpty()) System.out.print("Size=0 Top=0 Stack=");
 		else System.out.print("Size=" + this.size + " Top=" + this.stack[this.size - 1] + " Stack=");
