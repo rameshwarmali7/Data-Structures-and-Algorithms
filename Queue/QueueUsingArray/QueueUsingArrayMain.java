@@ -19,9 +19,9 @@ class Queue {
 		
 		if(this.size == this.capacity) throw new IllegalStateException();
 		
-		if(!isEmpty()) this.rear = (this.rear + 1) % this.capacity;
-		
 		this.queue[this.rear] = data;
+		this.rear = (this.rear + 1) % this.capacity;
+		
 		this.size++;
 		printQueue();
 	}
@@ -33,8 +33,6 @@ class Queue {
 		final int result = this.queue[this.front];
 		
 		this.front = (this.front + 1) % this.capacity;
-		
-		if(this.size == 1) this.rear = this.front;
 		
 		this.size--;
 		printQueue();
