@@ -1,6 +1,6 @@
 class Node {
 	
-	final public int data;
+	public final int data;
 	public Node nextNode;
 	
 	public Node(final int data) {
@@ -12,8 +12,6 @@ class Stack {
 	
 	private int size;
 	private Node top;
-	
-	public Stack() {}
 	
 	public void push(final int data) {
 		
