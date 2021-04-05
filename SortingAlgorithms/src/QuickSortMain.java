@@ -29,16 +29,9 @@ class QuickSort {
 		return givenArray;
 	}
 	
-	private int getRandomPivot(final int leftIndex, final int rightIndex) {
-		//Check document -> https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
-		Random random = new Random();
-		
-		return random.nextInt((rightIndex-leftIndex)+1)+leftIndex;
-	}
-	
 	private int partition(final int[] givenArray, int leftIndex, int rightIndex) {
 		
-		final int pivotIndex = getRandomPivot(leftIndex, rightIndex);
+		final int pivotIndex = (int) (Math.random()*(rightIndex-leftIndex+1) + leftIndex);
 		swap(givenArray, leftIndex, pivotIndex);
 		
 		int border = leftIndex + 1;
