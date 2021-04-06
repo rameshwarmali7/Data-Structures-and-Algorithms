@@ -13,7 +13,7 @@ public class HeapMain {
 		MaxHeap maxh = new MaxHeap();
 		
 		for(int i = 0; i < arrayLength; i++) {
-			int random = (int) (Math.random()*10 + 0); 
+			int random = (int) (Math.random()*arrayLength + 0); 
 			givenArray[i] = random;
 			minh.add(random);
 			maxh.add(random);
