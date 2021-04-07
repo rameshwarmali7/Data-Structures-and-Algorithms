@@ -74,31 +74,20 @@ public class SortingAlgorithmsMain {
 			maximumValue = Math.max(maximumValue, num);
 		}
 		
-		final List<Integer> countList = new ArrayList<Integer>();
+		final int[] countArray = new int[maximumValue - minimumValue + 1];
+		final List<Integer> sortedList = new ArrayList<Integer>();
 		
-		for(int i = 0; i < maximumValue - minimumValue + 1; i++) countList.add(0);
+		for(int num : givenList) countArray[num-minimumValue] += 1;
 		
-		for(int num : givenList) {
-			final int indexOfCountList = num-minimumValue;
-			int count = countList.get(indexOfCountList) + 1;
-			countList.remove(indexOfCountList);
-			countList.add(indexOfCountList, count);
-		}
-		
-		int indexOfGivenList = 0;
-		
-		for(int i = 0; i < countList.size(); i++) {
-			int count = countList.get(i);
+		for(int i = 0; i < countArray.length; i++) {
+			int count = countArray[i];
 			while(count > 0) {
-				int num = i + minimumValue;
-				givenList.remove(indexOfGivenList);
-				givenList.add(indexOfGivenList,num);
-				indexOfGivenList++;
+				sortedList.add(i+minimumValue);
 				count--;
 			}
 		}
-
-		System.out.println("countSort=" + givenList);
-		return givenList;
+		
+		System.out.println("countSort=" + sortedList);
+		return sortedList;
 	}
 }
