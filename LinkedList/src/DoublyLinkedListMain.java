@@ -60,10 +60,30 @@ class DoublyLinkedList {
 	
 	public void remove() {
 		
+		remove(this.size-1);
+		
 	}
 	
 	public void remove(final int index) {
 		
+		if(index < 0 || index >= this.size) throw new IllegalStateException();
+		
+		if(this.size == 1) {
+			this.head = null;
+		} else if(index == 0) {
+			this.head = this.head.next;
+			this.head.prev = null;
+		} else {
+			Node currNode = this.head;
+			for(int i = 0; i < index - 1; i++) currNode = currNode.next;
+
+			currNode.next = currNode.next.next;
+			
+			if(index != this.size - 1) currNode.next.prev = currNode;
+		}
+		
+		this.size--;
+		show();
 	}
 	
 	public int get(final int index) {
@@ -86,6 +106,15 @@ class DoublyLinkedList {
 			currNode = currNode.next;
 		}
 		System.out.println();
+
+		currNode = this.head;
+		while(currNode.next != null) currNode = currNode.next;
+		while(currNode != null) {
+			System.out.print(currNode.data + " ");
+			currNode = currNode.prev;
+		}
+		System.out.println();
+		System.out.println();
 	}
 	
 }
@@ -95,12 +124,9 @@ public class DoublyLinkedListMain {
 	public static void main(String[] args) {
 		
 		DoublyLinkedList dl = new DoublyLinkedList();
-		dl.add(5);
-		dl.add(63);
-		dl.add(23);
-		dl.add(1, 25);
-		dl.add(0, 11);
-		dl.add(5, 73);
+		dl.add(54); dl.add(63); dl.add(23); dl.add(1, 25); dl.add(0, 11); dl.add(5, 73);
+		System.out.println("-----------");
+		dl.remove(2);
 	}
 
 }
