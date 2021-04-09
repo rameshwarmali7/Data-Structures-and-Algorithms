@@ -24,7 +24,6 @@ class DoublyLinkedList {
 		this.size = 0;
 	}
 	
-	
 	public void add(final int data) {
 		
 		add(this.size,data);
@@ -84,7 +83,14 @@ class DoublyLinkedList {
 	
 	public int get(final int index) {
 		
-		return -1;
+		if(index < 0 || index >= this.size) throw new IllegalStateException();
+		
+		Node currNode = this.head;
+		
+		for(int i = 0; i < index; i++) currNode = currNode.next;
+		
+		System.out.println(currNode.data);
+		return currNode.data;
 	}
 	
 	public boolean isEmpty() {
@@ -119,8 +125,11 @@ public class DoublyLinkedListMain {
 	public static void main(String[] args) {
 		
 		DoublyLinkedList dl = new DoublyLinkedList();
-		dl.add(54); dl.add(63); dl.add(23); dl.add(1, 25); dl.add(0, 11); dl.add(5, 73);
-		System.out.println("-----------");
+		System.out.println("-------ADD------");
+		dl.add(54); dl.add(63); dl.add(23); dl.add(1, 25); dl.add(0, 11); dl.add(5, 73); dl.add(2, 88);
+		System.out.println("------REMOVE-----");
 		dl.remove(2);
+		System.out.println("-------GET------");
+		dl.get(0); dl.get(5); dl.get(3);
 	}
 }
