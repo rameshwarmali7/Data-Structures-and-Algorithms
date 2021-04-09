@@ -1,9 +1,5 @@
 //#Check folder D:\New Eclipse\aws doc\LinkedList\src
 //#Methods to Add
-//	add(data)
-//	add(index, data)
-//	remove()
-//	remove(index)
 //	get(index)
 //	isEmpty()
 //	size()
@@ -116,7 +112,6 @@ class DoublyLinkedList {
 		System.out.println();
 		System.out.println();
 	}
-	
 }
 
 public class DoublyLinkedListMain {
@@ -128,5 +123,4 @@ public class DoublyLinkedListMain {
 		System.out.println("-----------");
 		dl.remove(2);
 	}
-
 }
