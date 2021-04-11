@@ -56,7 +56,6 @@ public class StackUsingArrayMain {
 		}
 	}
 	
-	
 	public static void main(String[] args) {
 		
 		StackUsingArrayMain.Stack s = new StackUsingArrayMain.Stack(5);
@@ -73,5 +72,4 @@ public class StackUsingArrayMain {
 		
 		s.push(6); s.push(9); System.out.println();
 	}
-
 }
