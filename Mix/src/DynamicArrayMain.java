@@ -18,50 +18,44 @@ public class DynamicArrayMain {
 		}
 		
 		public void addAt(final Object object, final int index) {
-			
 			ensureCapacity();
-			
-			for(int i = size-1; i >= index; i--) this.objectArray[i+1] = this.objectArray[i];
-			
+			if(index < this.size - 1) {
+				for(int i = size-1; i >= index; i--) this.objectArray[i+1] = this.objectArray[i];
+			}
 			this.objectArray[index] = object;
 			this.size++;
 			printArray();
 		}
 		
 		public void remove() {
-			
 			removeAt(size()-1);
 		}
 		
 		public void removeAt(final int index) {
+			if(index >= this.size || this.size == 0 || index < 0) throw new IllegalStateException();
 			
-			if(size() == 0 || index > this.size) throw new IllegalStateException();
-			
-			for(int i = index; i < this.size; i++) this.objectArray[i] = this.objectArray[i+1];
-			
+			if(index < this.size - 1) {
+				for(int i = index; i < this.size; i++) this.objectArray[i] = this.objectArray[i+1];
+			}
 			this.size--;
 			printArray();
 		}
 		
 		public T get(final int index) {
-			
 			return (T) this.objectArray[index];
 		}
 		
 		public int size() {
-			
 			return this.size;
 		}
 		
 		private void ensureCapacity() {
-			
 			if(this.objectArray.length == size()) {
 				this.objectArray = Arrays.copyOf(this.objectArray, 2 * this.objectArray.length);
 			}
 		}
 		
 		private void printArray() {
-			
 			for(int i = 0; i < this.objectArray.length; i++) {
 				System.out.print(this.objectArray[i] + " ");
 			}
@@ -84,5 +78,4 @@ public class DynamicArrayMain {
 		da.removeAt(1);
 		da.removeAt(2);
 	}
-
 }
